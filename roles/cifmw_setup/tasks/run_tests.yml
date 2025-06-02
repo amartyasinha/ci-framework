@@ -1,0 +1,12 @@
+---
+- name: Run tests
+  tags:
+    - tests
+  ansible.builtin.import_role:
+    name: "{{ cifmw_run_test_role | default('tempest') }}"
+
+- name: Run post_tests hooks
+  vars:
+    step: post_tests
+  ansible.builtin.import_role:
+    name: run_hook
